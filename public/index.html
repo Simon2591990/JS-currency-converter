@@ -10,12 +10,16 @@
 <body>
     <div id="app">
         <h1>Currency Converter</h1>
-        <label for="euros">Euros</label>
-        <input type="number">
-        <select>
-            <option v-if="currencyData" v-model="selectedCurrency" v-for="rate in Object.keys(currencyData.rates)">{{rate}}</option>
-        </select>
-        <button v-on:click="convert()">Convert</button>
+        <form>
+            <label for="euros">Euros</label>
+            <input type="number" v-model="amount">
+            <select v-model="selectedCurrency">
+                <option v-if="currencyData"  v-for="rate in Object.keys(currencyData.rates)">{{rate}}</option>
+            </select>
+            <button v-on:click.prevent="convert">Convert</button>
+        </form>
+        <h2> converted amount</h2>
+        <p>{{convertedAmount}}</p>
     </div>    
 </body>
 </html>
