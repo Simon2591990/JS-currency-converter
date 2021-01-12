@@ -21,7 +21,8 @@
             <button v-on:click.prevent="convert">Convert</button>
         </form>
         <h2> converted amount</h2>
-        <p>{{convertedAmount}}</p>
+        <p v-if="convertMode === 'fromEuros'">{{amount}} Euros converted to {{selectedCurrency}} equals {{convertedAmount}}</p>
+        <p v-if="convertMode === 'toEuros'">{{amount}} {{selectedCurrency}} converted to Euros equals {{convertedAmount}}</p>
     </div>    
 </body>
 </html>
