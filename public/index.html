@@ -11,7 +11,9 @@
     <div id="app">
         <h1>Currency Converter</h1>
         <form>
-            <label for="euros">Euros</label>
+            <select v-model="convertMode">
+                <option value="fromEuros">From Euros</option>
+                <option value="toEuros">To Euros</option>
             <input type="number" v-model="amount">
             <select v-model="selectedCurrency">
                 <option v-if="currencyData"  v-for="rate in Object.keys(currencyData.rates)">{{rate}}</option>

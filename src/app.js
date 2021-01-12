@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
             selectedCurrency: null,
             amount: null,
             convertedAmount:  null,
+            convertMode: null,
         },
         
         mounted: function(){
@@ -20,8 +21,12 @@ document.addEventListener("DOMContentLoaded", () => {
                 .then(data => this.currencyData = data)
             },
             convert: function(){
-                const currency = this.currencyData.rates[this.selectedCurrency]
-                this.convertedAmount = this.amount * currency
+                let currency = this.currencyData.rates[this.selectedCurrency]
+                let result = 0
+                if (this.convertMode === "fromEuros") {result = this.amount * currency}
+                else if(this.convertMode === "toEuros") {result = this.amount / currency};
+
+                this.convertedAmount = result.toFixed(2)
             }
         }
     })
